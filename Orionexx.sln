@@ -26,6 +26,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orionexx.Web", "src\Gateway
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orionexx.Core.Shared", "src\Shared\Orionexx.Core.Shared\Orionexx.Core.Shared.csproj", "{B755CC97-8D13-4FB2-B06A-6A6DE4F0439A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orionexx.Tests", "Orionexx.Tests", "{6088BFA2-DEAD-4D6D-99F8-A9BBE68EB1EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orionexx.Identity.Tests", "tests\Orionexx.Identity.Tests\Orionexx.Identity.Tests.csproj", "{ED27DBB8-2793-4A19-B99F-112ACE7DD5AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +72,10 @@ Global
 		{B755CC97-8D13-4FB2-B06A-6A6DE4F0439A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B755CC97-8D13-4FB2-B06A-6A6DE4F0439A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B755CC97-8D13-4FB2-B06A-6A6DE4F0439A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED27DBB8-2793-4A19-B99F-112ACE7DD5AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED27DBB8-2793-4A19-B99F-112ACE7DD5AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED27DBB8-2793-4A19-B99F-112ACE7DD5AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED27DBB8-2793-4A19-B99F-112ACE7DD5AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{87565DC1-BFB6-41D8-BA4C-F2D050C92FA5} = {9559C586-158F-4736-AE40-FDBD7D14AD73}
@@ -79,5 +87,6 @@ Global
 		{6DDC5EDE-DA2A-468D-937F-3D9CFD83F88A} = {B402FC77-8C4C-4A0B-BF4A-C4D7905F3F6A}
 		{2FEEDC99-DF28-4030-86F6-282B18D18E57} = {07C06F31-8CE9-40A2-8766-206AAF4B0D9A}
 		{B755CC97-8D13-4FB2-B06A-6A6DE4F0439A} = {FBD9E6D9-F9A7-409D-9B14-652970083BCD}
+		{ED27DBB8-2793-4A19-B99F-112ACE7DD5AA} = {6088BFA2-DEAD-4D6D-99F8-A9BBE68EB1EC}
 	EndGlobalSection
 EndGlobal
