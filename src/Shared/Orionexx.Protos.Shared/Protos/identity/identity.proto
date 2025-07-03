@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "Orionexx.Proto";
+
+package orionexx.identity;
+
+import "login.proto";
+import "signup.proto";
+import "google/protobuf/empty.proto";
+
+
+service Identity {
+  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc SignUp (SignUpRequest) returns (google.protobuf.Empty);
+}

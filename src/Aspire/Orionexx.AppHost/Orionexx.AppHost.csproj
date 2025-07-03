@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Sdk Name="Aspire.AppHost.Sdk" Version="9.3.0"/>
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UserSecretsId>87b12a66-306f-4b99-8553-5862af2d07a4</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" />
+        <PackageReference Include="CommunityToolkit.Aspire.Hosting.Dapr" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Gateway\Orionexx.Web\Orionexx.Web.csproj" />
+      <ProjectReference Include="..\..\Identity\Orionexx.Identity.Grpc\Orionexx.Identity.Grpc.csproj" />
+    </ItemGroup>
+
+</Project>

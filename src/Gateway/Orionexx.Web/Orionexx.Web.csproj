@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Asp.Versioning.Http" />
+        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" />
+        <PackageReference Include="Dapr.AspNetCore" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="Scalar.AspNetCore" />
+        <PackageReference Include="Google.Protobuf" />
+        <PackageReference Include="Grpc.AspNetCore"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Aspire\Orionexx.ServiceDefaults\Orionexx.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\..\Shared\Orionexx.Core.Shared\Orionexx.Core.Shared.csproj" />
+      <ProjectReference Include="..\..\Shared\Orionexx.Protos.Shared\Orionexx.Protos.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Protobuf Include="..\..\Shared\Orionexx.Protos.Shared\Protos\identity\*.proto" GrpcServices="Client" />
+    </ItemGroup>
+
+</Project>

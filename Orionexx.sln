@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orionexx.Identity.Grpc", "src\Identity\Orionexx.Identity.Grpc\Orionexx.Identity.Grpc.csproj", "{87565DC1-BFB6-41D8-BA4C-F2D050C92FA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orionexx.Identity", "Orionexx.Identity", "{9559C586-158F-4736-AE40-FDBD7D14AD73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orionexx.Gateway", "Orionexx.Gateway", "{07C06F31-8CE9-40A2-8766-206AAF4B0D9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orionexx.Shared", "Orionexx.Shared", "{FBD9E6D9-F9A7-409D-9B14-652970083BCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orionexx.Protos.Shared", "src\Shared\Orionexx.Protos.Shared\Orionexx.Protos.Shared.csproj", "{6264886E-8409-4989-ABB9-4E0352961BCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orionexx.Identity.Application", "src\Identity\Orionexx.Identity.Application\Orionexx.Identity.Application.csproj", "{B9C3B1AA-7E8E-49C0-A9A9-3887E01A83F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orionexx.Identity.Core", "src\Identity\Orionexx.Identity.Core\Orionexx.Identity.Core.csproj", "{89C3988E-CED2-4D8F-9CDF-4D3CA7BC4903}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orionexx.Identity.Infrastructure", "src\Identity\Orionexx.Identity.Infrastructure\Orionexx.Identity.Infrastructure.csproj", "{5D851A47-DB5D-4E0A-85A4-90B775217948}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orionexx.Aspire", "Orionexx.Aspire", "{B402FC77-8C4C-4A0B-BF4A-C4D7905F3F6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orionexx.AppHost", "src\Aspire\Orionexx.AppHost\Orionexx.AppHost.csproj", "{13AF8E02-4799-48B0-9D21-6CB748CACA51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orionexx.ServiceDefaults", "src\Aspire\Orionexx.ServiceDefaults\Orionexx.ServiceDefaults.csproj", "{6DDC5EDE-DA2A-468D-937F-3D9CFD83F88A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orionexx.Web", "src\Gateway\Orionexx.Web\Orionexx.Web.csproj", "{2FEEDC99-DF28-4030-86F6-282B18D18E57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orionexx.Core.Shared", "src\Shared\Orionexx.Core.Shared\Orionexx.Core.Shared.csproj", "{B755CC97-8D13-4FB2-B06A-6A6DE4F0439A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87565DC1-BFB6-41D8-BA4C-F2D050C92FA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87565DC1-BFB6-41D8-BA4C-F2D050C92FA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87565DC1-BFB6-41D8-BA4C-F2D050C92FA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87565DC1-BFB6-41D8-BA4C-F2D050C92FA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6264886E-8409-4989-ABB9-4E0352961BCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6264886E-8409-4989-ABB9-4E0352961BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6264886E-8409-4989-ABB9-4E0352961BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6264886E-8409-4989-ABB9-4E0352961BCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9C3B1AA-7E8E-49C0-A9A9-3887E01A83F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9C3B1AA-7E8E-49C0-A9A9-3887E01A83F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9C3B1AA-7E8E-49C0-A9A9-3887E01A83F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9C3B1AA-7E8E-49C0-A9A9-3887E01A83F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89C3988E-CED2-4D8F-9CDF-4D3CA7BC4903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89C3988E-CED2-4D8F-9CDF-4D3CA7BC4903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89C3988E-CED2-4D8F-9CDF-4D3CA7BC4903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89C3988E-CED2-4D8F-9CDF-4D3CA7BC4903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D851A47-DB5D-4E0A-85A4-90B775217948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D851A47-DB5D-4E0A-85A4-90B775217948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D851A47-DB5D-4E0A-85A4-90B775217948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D851A47-DB5D-4E0A-85A4-90B775217948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13AF8E02-4799-48B0-9D21-6CB748CACA51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13AF8E02-4799-48B0-9D21-6CB748CACA51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13AF8E02-4799-48B0-9D21-6CB748CACA51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13AF8E02-4799-48B0-9D21-6CB748CACA51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DDC5EDE-DA2A-468D-937F-3D9CFD83F88A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DDC5EDE-DA2A-468D-937F-3D9CFD83F88A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DDC5EDE-DA2A-468D-937F-3D9CFD83F88A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DDC5EDE-DA2A-468D-937F-3D9CFD83F88A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FEEDC99-DF28-4030-86F6-282B18D18E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FEEDC99-DF28-4030-86F6-282B18D18E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FEEDC99-DF28-4030-86F6-282B18D18E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FEEDC99-DF28-4030-86F6-282B18D18E57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B755CC97-8D13-4FB2-B06A-6A6DE4F0439A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B755CC97-8D13-4FB2-B06A-6A6DE4F0439A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B755CC97-8D13-4FB2-B06A-6A6DE4F0439A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B755CC97-8D13-4FB2-B06A-6A6DE4F0439A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{87565DC1-BFB6-41D8-BA4C-F2D050C92FA5} = {9559C586-158F-4736-AE40-FDBD7D14AD73}
+		{6264886E-8409-4989-ABB9-4E0352961BCB} = {FBD9E6D9-F9A7-409D-9B14-652970083BCD}
+		{B9C3B1AA-7E8E-49C0-A9A9-3887E01A83F9} = {9559C586-158F-4736-AE40-FDBD7D14AD73}
+		{89C3988E-CED2-4D8F-9CDF-4D3CA7BC4903} = {9559C586-158F-4736-AE40-FDBD7D14AD73}
+		{5D851A47-DB5D-4E0A-85A4-90B775217948} = {9559C586-158F-4736-AE40-FDBD7D14AD73}
+		{13AF8E02-4799-48B0-9D21-6CB748CACA51} = {B402FC77-8C4C-4A0B-BF4A-C4D7905F3F6A}
+		{6DDC5EDE-DA2A-468D-937F-3D9CFD83F88A} = {B402FC77-8C4C-4A0B-BF4A-C4D7905F3F6A}
+		{2FEEDC99-DF28-4030-86F6-282B18D18E57} = {07C06F31-8CE9-40A2-8766-206AAF4B0D9A}
+		{B755CC97-8D13-4FB2-B06A-6A6DE4F0439A} = {FBD9E6D9-F9A7-409D-9B14-652970083BCD}
+	EndGlobalSection
+EndGlobal

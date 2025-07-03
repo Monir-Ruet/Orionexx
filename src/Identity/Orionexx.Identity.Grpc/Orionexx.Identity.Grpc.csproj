@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Protobuf_ProtocPath>/opt/homebrew/bin/protoc</Protobuf_ProtocPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Dapr.AspNetCore" />
+        <PackageReference Include="Google.Protobuf" />
+        <PackageReference Include="Grpc.AspNetCore"/>
+        <PackageReference Include="Grpc.AspNetCore.Server.Reflection" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Protobuf Include="..\..\Shared\Orionexx.Protos.Shared\Protos\identity\*.proto" GrpcServices="Server" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\..\Aspire\Orionexx.ServiceDefaults\Orionexx.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\..\Shared\Orionexx.Protos.Shared\Orionexx.Protos.Shared.csproj" />
+      <ProjectReference Include="..\Orionexx.Identity.Application\Orionexx.Identity.Application.csproj" />
+    </ItemGroup>
+
+</Project>
