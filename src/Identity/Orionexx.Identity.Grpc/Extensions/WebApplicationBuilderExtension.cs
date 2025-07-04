@@ -1,3 +1,6 @@
+using System.Reflection;
+using Orionexx.Identity.Application;
+using Orionexx.Identity.Infrastructure;
 using Orionexx.ServiceDefaults;
 
 namespace Orionexx.Identity.Grpc.Extensions;
@@ -10,6 +13,10 @@ public static class WebApplicationBuilderExtension
         builder.Services.AddGrpcReflection();
         builder.Services.AddDaprClient();
         builder.AddServiceDefaults();
+        builder.ConfigureApplication();
+        builder.ConfigureInfrastructure();
+
+        builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         return builder;
     }

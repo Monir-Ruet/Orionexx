@@ -4,7 +4,8 @@ option csharp_namespace = "Orionexx.Proto";
 
 package orionexx.identity;
 
-message SignUpRequest {
-  string email = 1;
+message SignupRequest {
+  string name = 1;
+  string email = 2;
   string password = 3;
 }

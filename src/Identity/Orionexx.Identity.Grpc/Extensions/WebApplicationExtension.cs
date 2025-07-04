@@ -10,7 +10,7 @@ public static class WebApplicationExtension
         app.MapGrpcService<IdentityService>();
         app.UseCloudEvents();
         app.MapSubscribeHandler();
-        
+
         return app;
     }
 }

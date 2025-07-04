@@ -12,16 +12,22 @@
         <PackageReference Include="Google.Protobuf" />
         <PackageReference Include="Grpc.AspNetCore"/>
         <PackageReference Include="Grpc.AspNetCore.Server.Reflection" />
+        <PackageReference Include="MediatR" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
     
     <ItemGroup>
-        <Protobuf Include="..\..\Shared\Orionexx.Protos.Shared\Protos\identity\*.proto" GrpcServices="Server" />
+        <Protobuf Include="..\..\Shared\Orionexx.Protos.Shared\identity\*.proto" GrpcServices="Server" />
     </ItemGroup>
     
     <ItemGroup>
       <ProjectReference Include="..\..\Aspire\Orionexx.ServiceDefaults\Orionexx.ServiceDefaults.csproj" />
       <ProjectReference Include="..\..\Shared\Orionexx.Protos.Shared\Orionexx.Protos.Shared.csproj" />
       <ProjectReference Include="..\Orionexx.Identity.Application\Orionexx.Identity.Application.csproj" />
+      <ProjectReference Include="..\Orionexx.Identity.Infrastructure\Orionexx.Identity.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

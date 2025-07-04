@@ -6,10 +6,10 @@ public static class DistributedApplicationBuilderExtension
 {
     public static void ConfigureDistributedApplication(this IDistributedApplicationBuilder builder)
     {
-        var pubsubComponent = builder.AddDaprPubSub("pubsub");
+        var sqlServerConnectionString = builder.AddConnectionString("Orionexx");
 
         builder.AddProject<Projects.Orionexx_Identity_Grpc>("OrionexxIdentity")
-            .WithReference(pubsubComponent)
+            .WithReference(sqlServerConnectionString)
             .WithDaprSidecar(new DaprSidecarOptions
             {
                 AppId = "OrionexxIdentity",
@@ -17,8 +17,7 @@ public static class DistributedApplicationBuilderExtension
                 AppProtocol = "grpc"
             });
 
-        builder.AddProject<Projects.Orionexx_Web>("Orionexx")
-            .WithReference(pubsubComponent)
+        builder.AddProject<Projects.Orionexx_Web>("OrionexxWeb")
             .WithDaprSidecar(new DaprSidecarOptions
             {
                 AppId = "Orionexx",

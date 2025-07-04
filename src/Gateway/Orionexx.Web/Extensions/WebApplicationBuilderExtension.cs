@@ -1,5 +1,6 @@
+using System.Reflection;
 using Asp.Versioning;
-using Orionexx.Core.Shared;
+using FluentValidation;
 using Orionexx.Core.Shared.Constants;
 using Orionexx.Proto;
 using Orionexx.ServiceDefaults;
@@ -30,6 +31,9 @@ public static class WebApplicationBuilderExtension
             options.SubstituteApiVersionInUrl = true;
         });
 
+        builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+        builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         builder.AddDaprGrpcClient<Identity.IdentityClient>(ServiceInvocations.IdentityService);
 
         return builder;
