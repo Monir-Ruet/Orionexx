@@ -15,6 +15,7 @@
       <PackageReference Include="AutoMapper" />
       <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
       <PackageReference Include="MediatR" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
       <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
     </ItemGroup>
 
@@ -24,11 +25,4 @@
       <Folder Include="Handlers\Authentication\Command\" />
       <Folder Include="Handlers\Authentication\Events\" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Reference Include="Microsoft.AspNetCore.Authentication.BearerToken">
-        <HintPath>..\..\..\..\..\.dotnet\shared\Microsoft.AspNetCore.App\9.0.5\Microsoft.AspNetCore.Authentication.BearerToken.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
 </Project>
