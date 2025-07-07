@@ -20,7 +20,7 @@
     </ItemGroup>
     
     <ItemGroup>
-        <Protobuf Include="..\..\Shared\Orionexx.Protos.Shared\identity\*.proto" GrpcServices="Server" />
+        <Protobuf Include="..\..\Shared\Orionexx.Protos.Shared\Identity\*.proto" GrpcServices="Server" />
     </ItemGroup>
     
     <ItemGroup>
