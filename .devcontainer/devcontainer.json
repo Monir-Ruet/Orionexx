@@ -1,0 +1,35 @@
+{
+	"name": ".NET and MS SQL",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-dotnettools.csharp",
+				"ms-azuretools.vscode-docker",
+				"ms-mssql.mssql"
+			]
+		}
+	},
+	
+	"containerEnv": {
+		"ASPIRE_ALLOW_UNSECURED_TRANSPORT": "true"
+	},
+
+	"forwardPorts": [7107],
+
+	"postCreateCommand": "./.devcontainer/scripts/setup.sh",
+
+	"features": {
+		"ghcr.io/devcontainers/features/dotnet:2": {},
+		"ghcr.io/dhoeric/features/act:1": {},
+		"ghcr.io/dapr/cli/dapr-cli:0": {},
+		"ghcr.io/devcontainers/features/docker-in-docker": {},
+		"ghcr.io/devcontainers-extra/features/protoc-asdf:1" : {},
+		"ghcr.io/dotnet/aspire-devcontainer-feature/dotnetaspire:1" : {}
+	},
+
+	"remoteUser": "vscode"
+}
