@@ -1,7 +1,11 @@
 #!/bin/bash
 set -e
 
+# github codespace setup script
 sudo chmod -R 777 /home/vscode
+mkdir -p /home/vscode/.vscode-remote/data/Machine
+touch /home/vscode/.vscode-remote/data/Machine/settings.json
+echo "{}" > /home/vscode/.vscode-remote/data/Machine/settings.json
 
 export PATH="$PATH:/home/vscode/.dotnet/tools"
 
@@ -14,6 +18,10 @@ dotnet dev-certs https --trust || true
 echo "🔁 Reinitializing Dapr..."
 dapr uninstall --all || true
 dapr init --slim
+
+# Resolved this error when starting shell in codespace:
+mkdir -p ~/.dapr
+dapr completion bash > ~/.dapr/completion.bash.inc
 
 echo "🐳 Restarting SQL Server container..."
 docker stop sqlserver || true
