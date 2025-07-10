@@ -13,12 +13,6 @@
 		}
 	},
 	
-	"containerEnv": {
-		"ASPIRE_ALLOW_UNSECURED_TRANSPORT": "true"
-	},
-
-	"forwardPorts": [7107],
-
 	"postCreateCommand": "./.devcontainer/scripts/setup.sh",
 
 	"features": {
