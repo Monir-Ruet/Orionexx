@@ -1,10 +1,9 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using Orionexx.Identity.Application.Infrastructure.Configurations;
-using Orionexx.Identity.Application.Infrastructure.Utilities;
+using Orionexx.Identity.Core.Infrastructure.Configurations;
+using Orionexx.Identity.Core.Infrastructure.Utilities;
 
 namespace Orionexx.Identity.Infrastructure.Utilities
 {
@@ -74,7 +73,7 @@ namespace Orionexx.Identity.Infrastructure.Utilities
             var email = principal?.FindFirst(ClaimTypes.Email)?.Value;
             var role = principal?.FindFirst(ClaimTypes.Role)?.Value;
             var jti = principal?.FindFirst(JwtRegisteredClaimNames.Jti)?.Value;
-            
+
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(role) || string.IsNullOrEmpty(jti))
                 return null;
             return GenerateToken(userId, email, role, jti, isAccessToken);

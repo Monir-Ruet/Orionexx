@@ -1,21 +1,14 @@
 using Microsoft.AspNetCore.Identity;
-using Orionexx.Identity.Application.Handlers.Account.Command;
-using Orionexx.Identity.Application.Infrastructure.Repositories;
 using Orionexx.Identity.Core.Entities.Account;
+using Orionexx.Identity.Core.Infrastructure.Repositories;
 
 namespace Orionexx.Identity.Infrastructure.Repositories;
 
 public class AccountRepository(UserManager<AppUser> userManager) : IAccountRepository
 {
-    public async Task<bool> RegisterAsync(RegisterCommand request)
+    public async Task<IdentityResult> RegisterAsync(AppUser user, string password)
     {
-        var user = new AppUser()
-        {
-            Email = request.Email,
-            UserName = request.Email
-        };
-        var result = await userManager.CreateAsync(user, request.Password);
-        return result.Succeeded;
+        return await userManager.CreateAsync(user, password);
     }
 
     public async Task<AppUser?> FindByEmailAsync(string email)

@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using Orionexx.Identity.Application.Infrastructure.Configurations;
+using Orionexx.Identity.Core.Infrastructure.Configurations;
 
 namespace Orionexx.Identity.Infrastructure.Configurations;
 

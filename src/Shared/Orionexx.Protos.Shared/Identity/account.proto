@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "Orionexx.Proto";
+
+package Orionexx.Identity;
+
+import "forgotpassword.proto";
+import "profile.proto";
+import "resetpassword.proto";
+import "signup.proto";
+import "refresh.proto";
+import "google/protobuf/empty.proto";
+import "accesstokenresponse.proto";
+
+service Account {
+  rpc Profile(ProfileRequest) returns (User);
+  rpc ForgotPassword(ForgotPasswordRequest) returns (google.protobuf.Empty);
+  rpc ResetPassword(ResetPasswordRequest) returns (google.protobuf.Empty);
+  rpc Signup (SignupRequest) returns (google.protobuf.Empty);
+  rpc RefreshAccessToken (RefreshRequest) returns (AccessTokenResponse);
+}

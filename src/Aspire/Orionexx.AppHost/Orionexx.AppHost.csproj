@@ -17,7 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Gateway\Orionexx.Web\Orionexx.Web.csproj" />
-      <ProjectReference Include="..\..\Identity\Orionexx.Identity.Grpc\Orionexx.Identity.Grpc.csproj" />
+      <ProjectReference Include="..\..\Identity\Orionexx.Identity.Service\Orionexx.Identity.Service.csproj" />
     </ItemGroup>
 
 </Project>

@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Shared\Orionexx.Core.Shared\Orionexx.Core.Shared.csproj" />
-      <ProjectReference Include="..\Orionexx.Identity.Application\Orionexx.Identity.Application.csproj" />
       <ProjectReference Include="..\Orionexx.Identity.Core\Orionexx.Identity.Core.csproj" />
     </ItemGroup>
 

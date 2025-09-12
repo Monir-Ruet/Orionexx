@@ -34,7 +34,9 @@ public static class WebApplicationBuilderExtension
         builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-        builder.AddDaprGrpcClient<Identity.IdentityClient>(ServiceInvocations.IdentityService);
+
+        builder.AddDaprGrpcClient<Account.AccountClient>(ServiceInvocations.IdentityService);
+        builder.AddDaprGrpcClient<Auth.AuthClient>(ServiceInvocations.IdentityService);
 
         return builder;
     }

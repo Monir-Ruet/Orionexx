@@ -4,12 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Orionexx.Identity.Application.Infrastructure.Configurations;
-using Orionexx.Identity.Application.Infrastructure.Repositories;
-using Orionexx.Identity.Application.Infrastructure.Utilities;
 using Orionexx.Identity.Core.Entities.Account;
+using Orionexx.Identity.Core.Infrastructure.Configurations;
+using Orionexx.Identity.Core.Infrastructure.Repositories;
+using Orionexx.Identity.Core.Infrastructure.Utilities;
 using Orionexx.Identity.Infrastructure.Configurations;
 using Orionexx.Identity.Infrastructure.Data;
 using Orionexx.Identity.Infrastructure.Repositories;
@@ -68,10 +67,10 @@ public static class DependencyInjection
         });
 
 
-        builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
+        builder.Services.AddScoped<IAuthRepository, AuthRepository>();
         builder.Services.AddScoped<IAccountRepository, AccountRepository>();
         builder.Services.AddScoped<ITokenProvider, TokenProvider>();
-        
+
         return builder;
     }
 }

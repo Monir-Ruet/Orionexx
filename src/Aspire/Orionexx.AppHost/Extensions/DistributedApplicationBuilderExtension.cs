@@ -8,7 +8,7 @@ public static class DistributedApplicationBuilderExtension
     {
         var sqlServerConnectionString = builder.AddConnectionString("Orionexx");
 
-        builder.AddProject<Projects.Orionexx_Identity_Grpc>("OrionexxIdentity")
+        builder.AddProject<Projects.Orionexx_Identity_Service>("OrionexxIdentity")
             .WithReference(sqlServerConnectionString)
             .WithDaprSidecar(new DaprSidecarOptions
             {

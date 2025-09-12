@@ -1,0 +1,23 @@
+using AutoMapper;
+using MediatR;
+using Orionexx.Core.Shared.Abstractions;
+using Orionexx.Identity.Core.Infrastructure.Repositories;
+using Orionexx.Proto;
+
+namespace Orionexx.Identity.Service.Handlers.Account.Query;
+
+public class ProfileQuery : IRequest<Result<User>>
+{
+    public required string Email { get; set; }
+}
+
+public class ProfileHandler(
+    IMapper mapper, 
+    IAccountRepository accountRepository) : IRequestHandler<ProfileQuery, Result<User>>
+{
+    public async Task<Result<User>> Handle(ProfileQuery request, CancellationToken cancellationToken)
+    {
+        var user =  await accountRepository.FindByEmailAsync(request.Email);
+        return user == null ? Result.Failure<User>() : Result.Success(mapper.Map<User>(user));
+    }
+}

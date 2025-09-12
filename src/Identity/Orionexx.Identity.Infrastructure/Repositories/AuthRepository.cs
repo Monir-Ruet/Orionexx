@@ -1,12 +1,10 @@
 using Microsoft.AspNetCore.Identity;
-using Orionexx.Identity.Application.Handlers.Authentication.Query;
-using Orionexx.Identity.Application.Infrastructure.Repositories;
 using Orionexx.Identity.Core.Entities.Account;
+using Orionexx.Identity.Core.Infrastructure.Repositories;
 
 namespace Orionexx.Identity.Infrastructure.Repositories;
 
-public class AuthenticationRepository(
-    SignInManager<AppUser> signInManager) : IAuthenticationRepository
+public class AuthRepository(SignInManager<AppUser> signInManager) : IAuthRepository
 {
     public async Task<bool> LoginAsync(AppUser user, string password, CancellationToken cancellationToken = default)
     {
