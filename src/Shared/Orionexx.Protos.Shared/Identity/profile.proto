@@ -10,9 +10,8 @@ message ProfileRequest{
 
 message User {
   string Id = 1;
-  string Firstname = 2;
-  string Lastname = 3;
-  string Username = 4;
-  string Email = 5;
-  string Image = 6;
+  string FullName = 2;
+  string Username = 3;
+  string Email = 4;
+  string Image = 5;
 }

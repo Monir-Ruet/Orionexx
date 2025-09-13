@@ -14,13 +14,16 @@ public static class AccountEndpoints
 {
     public static IEndpointRouteBuilder MapAccountEndpoints(this IEndpointRouteBuilder app)
     {
-        var route = app.MapGroup("/account").WithTags("Account");
+        var route = app.MapGroup("/account")
+                    .RequireAuthorization()
+                    .WithTags("Account");
 
         route.MapPost("/profile", Profile)
             .Produces(StatusCodes.Status200OK)
             .Produces(StatusCodes.Status404NotFound);
 
         route.MapGet("/ForgotPassword", ForgotPassword)
+            .AllowAnonymous()
             .Produces(StatusCodes.Status200OK);
 
         route.MapPost("/ResetPassword", ResetPassword)
@@ -62,7 +65,7 @@ public static class AccountEndpoints
         IMapper mapper,
         Account.AccountClient accountGrpcClient)
     {
-        if (ValidatorsHelpers.IsValidEmail(email))
+        if (!ValidatorsHelpers.IsValidEmail(email))
             return Results.BadRequest();
         var profileReq = new ProfileRequest()
         {
@@ -79,7 +82,7 @@ public static class AccountEndpoints
     {
         try
         {
-            if (ValidatorsHelpers.IsValidEmail(email))
+            if (!ValidatorsHelpers.IsValidEmail(email))
                 return Results.BadRequest();
             var request = new ForgotPasswordRequest()
             {

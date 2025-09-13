@@ -1,10 +1,8 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
 using Orionexx.Identity.Core.Entities.Account;
 using Orionexx.Identity.Core.Infrastructure.Configurations;
 using Orionexx.Identity.Core.Infrastructure.Repositories;
@@ -47,25 +45,8 @@ public static class DependencyInjection
             options.Password.RequireNonAlphanumeric = false;
             options.Password.RequiredLength = 6;
             options.Lockout.MaxFailedAccessAttempts = 5;
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
         });
-
-        builder.Services.AddAuthentication(options =>
-        {
-            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(options =>
-        {
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = true,
-                ValidateAudience = false,
-                ValidateLifetime = true,
-                ValidIssuer = "Orionexx.Identity",
-                ValidAudience = "Orionexx.Web",
-                IssuerSigningKey = new SymmetricSecurityKey("supersecretkey"u8.ToArray())
-            };
-        });
-
 
         builder.Services.AddScoped<IAuthRepository, AuthRepository>();
         builder.Services.AddScoped<IAccountRepository, AccountRepository>();

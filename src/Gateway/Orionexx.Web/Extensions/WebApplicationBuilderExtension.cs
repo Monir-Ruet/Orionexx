@@ -15,6 +15,8 @@ public static class WebApplicationBuilderExtension
 
         builder.AddServiceDefaults();
 
+        builder.AddDefaultAuthentication();
+
         builder.Services.AddDaprClient();
 
         builder.Services.AddApiVersioning(options =>

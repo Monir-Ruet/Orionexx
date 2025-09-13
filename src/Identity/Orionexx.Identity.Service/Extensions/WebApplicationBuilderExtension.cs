@@ -13,6 +13,7 @@ public static class WebApplicationBuilderExtension
         builder.Services.AddGrpcReflection();
         builder.Services.AddDaprClient();
         builder.AddServiceDefaults();
+        builder.AddDefaultAuthentication();
         builder.ConfigureInfrastructure();
 
         builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
