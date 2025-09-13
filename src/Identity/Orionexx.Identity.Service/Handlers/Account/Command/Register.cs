@@ -20,7 +20,7 @@ public class Register(IAccountRepository accountRepository) : IRequestHandler<Re
         var appUser = new AppUser()
         {
             Email = request.Email,
-            FirstName = request.Name,
+            FullName = request.Name,
         };
         var isRegistered = await accountRepository.RegisterAsync(appUser, request.Password);
         return isRegistered.Succeeded ? Result.Success() : Result.Failure();

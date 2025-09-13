@@ -38,6 +38,6 @@ sleep 10
 echo "🔄 Applying EF migrations..."
 dotnet ef database update \
   --project ./src/Identity/Orionexx.Identity.Infrastructure/ \
-  --startup-project ./src/Identity/Orionexx.Identity.Grpc/
+  --startup-project ./src/Identity/Orionexx.Identity.Service/
 
 echo "✅ Setup complete."
