@@ -5,6 +5,7 @@
   <ItemGroup>
     <PackageVersion Include="Asp.Versioning.Http" Version="8.1.0" />
     <PackageVersion Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
+    <PackageVersion Include="Aspire.Hosting.RabbitMQ" Version="9.4.2" />
     <PackageVersion Include="AutoMapper" Version="14.0.0" />
     <PackageVersion Include="CommunityToolkit.Aspire.Hosting.Dapr" Version="9.5.0" />
     <PackageVersion Include="Dapr.AspNetCore" Version="1.15.4" />
