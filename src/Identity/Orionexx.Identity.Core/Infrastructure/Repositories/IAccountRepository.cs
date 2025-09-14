@@ -7,4 +7,6 @@ public interface IAccountRepository
 {
     Task<IdentityResult> RegisterAsync(AppUser request, string password);
     Task<AppUser?> FindByEmailAsync(string email);
+    Task<bool> ResetPasswordAsync(AppUser user, string resetCode, string newPassword);
+    Task<string> GeneratePasswordResetTokenAsync(AppUser user);
 }

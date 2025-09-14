@@ -37,11 +37,27 @@ public class AccountService(IMediator mediator) : Account.AccountBase
 
     public override async Task<Empty> ResetPassword(ResetPasswordRequest request, ServerCallContext context)
     {
+        var resetPasswordCommand = new ResetPasswordCommand
+        {
+            Email = request.Email,
+            ResetCode = request.ResetCode,
+            NewPassword = request.NewPassword
+        };
+        var IsResetSuccess = await mediator.Send(resetPasswordCommand);
+        if (!IsResetSuccess)
+            throw new RpcException(new Status(StatusCode.InvalidArgument, "Password reset failed"));
         return await Task.FromResult(new Empty());
     }
 
     public override async Task<Empty> ForgotPassword(ForgotPasswordRequest request, ServerCallContext context)
     {
+        var forgotPasswordCommand = new ForgotPasswordCommand
+        {
+            Email = request.Email
+        };
+        var forgotPasswordResult = await mediator.Send(forgotPasswordCommand);
+        if (!forgotPasswordResult.IsSuccess)
+            throw new RpcException(new Status(StatusCode.NotFound, "There is no user with this credentials"));
         return await Task.FromResult(new Empty());
     }
 }

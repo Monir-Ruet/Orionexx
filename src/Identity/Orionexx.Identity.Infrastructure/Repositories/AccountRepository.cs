@@ -15,4 +15,15 @@ public class AccountRepository(UserManager<AppUser> userManager) : IAccountRepos
     {
         return await userManager.FindByEmailAsync(email);
     }
+
+    public async Task<bool> ResetPasswordAsync(AppUser user, string resetCode, string newPassword)
+    {
+        var result = await userManager.ResetPasswordAsync(user, resetCode, newPassword);
+        return result.Succeeded;
+    }
+
+    public async Task<string> GeneratePasswordResetTokenAsync(AppUser user)
+    {
+        return await userManager.GeneratePasswordResetTokenAsync(user);
+    }
 }
