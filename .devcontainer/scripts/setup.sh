@@ -17,7 +17,7 @@ dotnet dev-certs https --trust || true
 
 echo "🔁 Reinitializing Dapr..."
 dapr uninstall --all || true
-dapr init --slim
+dapr init
 
 # Resolved this error when starting shell in codespace:
 mkdir -p ~/.dapr
@@ -35,10 +35,6 @@ docker run -e "ACCEPT_EULA=Y" \
 docker stop rabbitmq || true
 docker rm rabbitmq || true
 docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:4.1-management
-
-docker stop redis || true
-docker rm redis || true
-docker run -d --name redis -p 6379:6379 redis:latest
 
 echo "⏳ Waiting for SQL Server to be ready..."
 sleep 10
