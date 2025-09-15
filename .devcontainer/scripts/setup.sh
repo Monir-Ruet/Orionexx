@@ -32,6 +32,14 @@ docker run -e "ACCEPT_EULA=Y" \
   --name sqlserver \
   -d mcr.microsoft.com/mssql/server:2022-latest
 
+docker stop rabbitmq || true
+docker rm rabbitmq || true
+docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:4.1-management
+
+docker stop redis || true
+docker rm redis || true
+docker run -d --name redis -p 6379:6379 redis:latest
+
 echo "⏳ Waiting for SQL Server to be ready..."
 sleep 10
 
@@ -39,5 +47,7 @@ echo "🔄 Applying EF migrations..."
 dotnet ef database update \
   --project ./src/Identity/Orionexx.Identity.Infrastructure/ \
   --startup-project ./src/Identity/Orionexx.Identity.Service/
+
+dotnet ef database update --project ./src/Workers/Orionexx.Events
 
 echo "✅ Setup complete."
