@@ -15,7 +15,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         {
             entity.HasKey(e => e.Id);
 
-            entity.Property(e => e.MessageType)
+            entity.Property(e => e.EventType)
                 .IsRequired()
                 .HasMaxLength(255);
 

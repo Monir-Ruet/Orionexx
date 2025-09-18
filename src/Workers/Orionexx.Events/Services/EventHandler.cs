@@ -27,7 +27,7 @@ public class EventService(
             ev.ProcessedAt = DateTime.UtcNow;
             ev.Status = nameof(EventStatus.Processing);
             
-            await eventPublisher.PublishAsync(ev.MessageType, ev.Payload, cancellationToken);
+            await eventPublisher.PublishAsync(ev.EventType, ev.Payload, cancellationToken);
             await dbContext.SaveChangesAsync(cancellationToken);
         }
     }

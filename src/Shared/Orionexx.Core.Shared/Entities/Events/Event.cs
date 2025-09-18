@@ -12,7 +12,7 @@ public class Event
 
     [Required]
     [MaxLength(255)]
-    public required string MessageType { get; set; }
+    public required string EventType { get; set; }
 
     [Required]
     public string Payload { get; set; } = string.Empty;

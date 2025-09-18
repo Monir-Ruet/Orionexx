@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Orionexx.Core.Shared.Entities.Events;
 using Orionexx.Identity.Core.Entities.Account;
 
 namespace Orionexx.Identity.Infrastructure.Persistence;
@@ -22,4 +23,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
         modelBuilder.Entity<IdentityUserToken<string>>().ToTable("UserTokens");
     }
+
+    public DbSet<Event> Events => Set<Event>();
 }

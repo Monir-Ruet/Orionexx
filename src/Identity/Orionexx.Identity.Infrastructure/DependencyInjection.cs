@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -8,6 +9,7 @@ using Orionexx.Identity.Application.Infrastructure.Repositories;
 using Orionexx.Identity.Core.Entities.Account;
 using Orionexx.Identity.Infrastructure.Configurations;
 using Orionexx.Identity.Infrastructure.Persistence;
+using Orionexx.Identity.Infrastructure.Persistence.Interceptors;
 using Orionexx.Identity.Infrastructure.Repositories;
 using Orionexx.Identity.Infrastructure.Utilities;
 
@@ -27,7 +29,8 @@ public static class DependencyInjection
         ValidateConfigurationHelper.ValidateSectionRecursive(appConfiguration);
 
         builder.Services.AddSingleton<IAppConfiguration>(appConfiguration);
-
+        builder.Services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+        
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
         {
             options.UseSqlServer(appConfiguration.ConnectionStrings.Orionexx);
