@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 using AutoMapper;
 using Grpc.Core;
 using Microsoft.AspNetCore.Mvc;
@@ -15,18 +16,18 @@ public static class AccountEndpoints
     public static IEndpointRouteBuilder MapAccountEndpoints(this IEndpointRouteBuilder app)
     {
         var route = app.MapGroup("/account")
-                    .RequireAuthorization()
                     .WithTags("Account");
 
         route.MapPost("/profile", Profile)
+            .RequireAuthorization()
             .Produces(StatusCodes.Status200OK)
             .Produces(StatusCodes.Status404NotFound);
 
         route.MapGet("/ForgotPassword", ForgotPassword)
-            .AllowAnonymous()
             .Produces(StatusCodes.Status200OK);
 
         route.MapPost("/ResetPassword", ResetPassword)
+            .RequireAuthorization()
             .AddEndpointFilter<ValidationFilter<ResetPasswordRequestDto>>()
             .Produces(StatusCodes.Status200OK);
 
@@ -61,10 +62,12 @@ public static class AccountEndpoints
     }
 
     private static async Task<IResult> Profile(
-        [FromQuery, Required] string email,
         IMapper mapper,
-        Account.AccountClient accountGrpcClient)
+        Account.AccountClient accountGrpcClient,
+        IServiceProvider serviceProvider)
     {
+        var httpContext = serviceProvider.GetRequiredService<IHttpContextAccessor>()?.HttpContext;
+        var email = httpContext?.User?.FindFirst(ClaimTypes.Email)?.Value;
         if (!ValidatorsHelpers.IsValidEmail(email))
             return Results.BadRequest();
         var profileReq = new ProfileRequest()

@@ -12,6 +12,6 @@ public class IdentityProfiles : Profile
         CreateMap<LoginRequestDto, LoginRequest>();
         CreateMap<SignupRequestDto, SignupRequest>();
         CreateMap<ResetPasswordRequestDto, ResetPasswordRequest>();
-        CreateMap<UserResponseDto, User>();
+        CreateMap<User, UserResponseDto>();
     }
 }

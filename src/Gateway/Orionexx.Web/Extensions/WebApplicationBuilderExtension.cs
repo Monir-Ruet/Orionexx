@@ -19,6 +19,8 @@ public static class WebApplicationBuilderExtension
 
         builder.Services.AddDaprClient();
 
+        builder.Services.AddHttpContextAccessor();
+
         builder.Services.AddApiVersioning(options =>
         {
             options.DefaultApiVersion = new ApiVersion(1, 0);

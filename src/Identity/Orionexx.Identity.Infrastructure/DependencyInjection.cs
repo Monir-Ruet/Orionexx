@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Orionexx.Identity.Application.Infrastructure.Configurations;
 using Orionexx.Identity.Application.Infrastructure.Repositories;
-using Orionexx.Identity.Application.Infrastructure.Utilities;
 using Orionexx.Identity.Core.Entities.Account;
 using Orionexx.Identity.Infrastructure.Configurations;
 using Orionexx.Identity.Infrastructure.Persistence;
@@ -41,7 +40,7 @@ public static class DependencyInjection
         builder.Services.Configure<IdentityOptions>(options =>
         {
             options.Password.RequireDigit = false;
-            options.Password.RequireLowercase = true;
+            options.Password.RequireUppercase = false;
             options.Password.RequireNonAlphanumeric = false;
             options.Password.RequiredLength = 6;
             options.Lockout.MaxFailedAccessAttempts = 5;
@@ -50,7 +49,6 @@ public static class DependencyInjection
 
         builder.Services.AddScoped<IAuthRepository, AuthRepository>();
         builder.Services.AddScoped<IAccountRepository, AccountRepository>();
-        builder.Services.AddScoped<ITokenProvider, TokenProvider>();
 
         return builder;
     }

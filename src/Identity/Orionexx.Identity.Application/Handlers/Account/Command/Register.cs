@@ -33,9 +33,9 @@ public class Register(
             var isRegistered = await accountRepository.RegisterAsync(appUser, request.Password);
             return isRegistered.Succeeded ? Result.Success() : Result.Failure();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            logger.LogError("An error occurred while registering user");
+            logger.LogError("An error occurred while registering user {ex}", ex);
             return Result.Failure();
         }
     }

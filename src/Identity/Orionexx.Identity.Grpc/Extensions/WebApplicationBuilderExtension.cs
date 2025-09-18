@@ -1,5 +1,6 @@
 using System.Reflection;
 using FluentValidation;
+using Orionexx.Identity.Application;
 using Orionexx.Identity.Infrastructure;
 using Orionexx.ServiceDefaults;
 
@@ -14,11 +15,8 @@ public static class WebApplicationBuilderExtension
         builder.Services.AddDaprClient();
         builder.AddServiceDefaults();
         builder.AddDefaultAuthentication();
+        builder.ConfigureApplication();
         builder.ConfigureInfrastructure();
-
-        builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
-        builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
         return builder;
     }
