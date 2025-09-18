@@ -1,4 +1,4 @@
-using Orionexx.Identity.Grpc.Extensions;
+using Orionexx.Identity.Service.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

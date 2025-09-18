@@ -12,12 +12,14 @@
 
     <ItemGroup>
         <PackageReference Include="Aspire.Hosting.AppHost" />
+        <PackageReference Include="Aspire.Hosting.RabbitMQ" />
         <PackageReference Include="CommunityToolkit.Aspire.Hosting.Dapr" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\Gateway\Orionexx.Web\Orionexx.Web.csproj" />
       <ProjectReference Include="..\..\Identity\Orionexx.Identity.Grpc\Orionexx.Identity.Grpc.csproj" />
+      <ProjectReference Include="..\..\Workers\Orionexx.Events\Orionexx.Events.csproj" />
     </ItemGroup>
 
 </Project>

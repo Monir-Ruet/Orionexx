@@ -1,13 +1,14 @@
 using Orionexx.Identity.Grpc.Services;
 
-namespace Orionexx.Identity.Grpc.Extensions;
+namespace Orionexx.Identity.Service.Extensions;
 
 public static class WebApplicationExtension
 {
     public static WebApplication ConfigureWebApplication(this WebApplication app)
     {
         app.MapGrpcReflectionService();
-        app.MapGrpcService<IdentityService>();
+        app.MapGrpcService<AuthService>();
+        app.MapGrpcService<AccountService>();
         app.UseCloudEvents();
         app.MapSubscribeHandler();
 

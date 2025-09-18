@@ -1,6 +1,6 @@
 ﻿namespace Orionexx.Core.Shared.Primitives;
 
-public abstract class BaseAuditableEntity : BaseEntity
+public abstract class BaseAuditableEntity<T> : BaseEntity<T>
 {
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
 

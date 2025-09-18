@@ -17,7 +17,7 @@ dotnet dev-certs https --trust || true
 
 echo "🔁 Reinitializing Dapr..."
 dapr uninstall --all || true
-dapr init --slim
+dapr init
 
 # Resolved this error when starting shell in codespace:
 mkdir -p ~/.dapr
@@ -32,6 +32,10 @@ docker run -e "ACCEPT_EULA=Y" \
   --name sqlserver \
   -d mcr.microsoft.com/mssql/server:2022-latest
 
+docker stop rabbitmq || true
+docker rm rabbitmq || true
+docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:4.1-management
+
 echo "⏳ Waiting for SQL Server to be ready..."
 sleep 10
 
@@ -39,5 +43,7 @@ echo "🔄 Applying EF migrations..."
 dotnet ef database update \
   --project ./src/Identity/Orionexx.Identity.Infrastructure/ \
   --startup-project ./src/Identity/Orionexx.Identity.Grpc/
+
+dotnet ef database update --project ./src/Workers/Orionexx.Events
 
 echo "✅ Setup complete."

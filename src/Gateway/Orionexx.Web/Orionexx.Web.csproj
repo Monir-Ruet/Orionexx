@@ -25,7 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Protobuf Include="..\..\Shared\Orionexx.Protos.Shared\Identity\*.proto" GrpcServices="Client" />
+        <Protobuf Include="..\..\Shared\Orionexx.Protos.Shared\**\*.proto" GrpcServices="Client" Link="Protos\%(RecursiveDir)%(Filename)%(Extension)"/>
     </ItemGroup>
 
 </Project>

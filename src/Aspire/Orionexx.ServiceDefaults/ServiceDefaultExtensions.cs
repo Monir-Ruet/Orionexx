@@ -98,7 +98,7 @@ public static class ServiceDefaultExtensions
         return builder;
     }
 
-    public static TBuilder AddDefaultHealthChecks<TBuilder>(this TBuilder builder)
+    private static TBuilder AddDefaultHealthChecks<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
     {
         builder.Services.AddHealthChecks()

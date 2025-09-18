@@ -1,9 +1,9 @@
 using System.Reflection;
-using Orionexx.Identity.Application;
+using FluentValidation;
 using Orionexx.Identity.Infrastructure;
 using Orionexx.ServiceDefaults;
 
-namespace Orionexx.Identity.Grpc.Extensions;
+namespace Orionexx.Identity.Service.Extensions;
 
 public static class WebApplicationBuilderExtension
 {
@@ -13,10 +13,12 @@ public static class WebApplicationBuilderExtension
         builder.Services.AddGrpcReflection();
         builder.Services.AddDaprClient();
         builder.AddServiceDefaults();
-        builder.ConfigureApplication();
+        builder.AddDefaultAuthentication();
         builder.ConfigureInfrastructure();
 
         builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+        builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+        builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
         return builder;
     }
