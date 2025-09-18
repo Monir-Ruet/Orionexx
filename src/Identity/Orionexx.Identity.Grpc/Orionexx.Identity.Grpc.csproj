@@ -21,9 +21,9 @@
         </PackageReference>
     </ItemGroup>
     
-    <ItemGroup>
+    <!-- <ItemGroup>
         <Protobuf Include="..\..\Shared\Orionexx.Protos.Shared\**/*.proto" GrpcServices="Server" Link="Protos\%(RecursiveDir)%(Filename)%(Extension)"/>
-    </ItemGroup>
+    </ItemGroup> -->
     
     <ItemGroup>
       <ProjectReference Include="..\..\Aspire\Orionexx.ServiceDefaults\Orionexx.ServiceDefaults.csproj" />

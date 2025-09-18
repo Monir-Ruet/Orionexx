@@ -1,4 +1,3 @@
-using AutoMapper;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using MediatR;
@@ -8,9 +7,7 @@ using Orionexx.Proto;
 
 namespace Orionexx.Identity.Grpc.Services;
 
-public class AccountService(
-    IMediator mediator,
-    IMapper mapper) : Account.AccountBase
+public class AccountService(IMediator mediator) : Account.AccountBase
 {
     public override async Task<Empty> Signup(SignupRequest request, ServerCallContext context)
     {
@@ -35,7 +32,7 @@ public class AccountService(
         var profileResult = await mediator.Send(profileQuery);
         if (!profileResult.IsSuccess)
             throw new RpcException(new Status(StatusCode.NotFound, "There is no user with this credentials"));
-        return mapper.Map<User>(profileResult.Value);
+        return profileResult.Value;
     }
 
     public override async Task<Empty> ResetPassword(ResetPasswordRequest request, ServerCallContext context)

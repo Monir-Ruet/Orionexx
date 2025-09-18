@@ -1,7 +1,7 @@
 using AutoMapper;
 using MediatR;
 using Orionexx.Core.Shared.Abstractions;
-using Orionexx.Identity.Application.Contracts.Account;
+using Orionexx.Proto;
 using Orionexx.Identity.Application.Infrastructure.Repositories;
 
 namespace Orionexx.Identity.Application.Handlers.Account.Query;

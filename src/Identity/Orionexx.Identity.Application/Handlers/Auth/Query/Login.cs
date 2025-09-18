@@ -1,7 +1,7 @@
 using MediatR;
+using Orionexx.Proto;
 using Microsoft.Extensions.Logging;
 using Orionexx.Core.Shared.Abstractions;
-using Orionexx.Identity.Application.Contracts.Auth;
 using Orionexx.Identity.Application.Infrastructure.Repositories;
 using Orionexx.Identity.Application.Infrastructure.Utilities;
 

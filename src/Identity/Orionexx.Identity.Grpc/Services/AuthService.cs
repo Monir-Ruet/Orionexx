@@ -6,9 +6,7 @@ using Orionexx.Proto;
 
 namespace Orionexx.Identity.Grpc.Services;
 
-public class AuthService(
-    IMediator mediator,
-    IMapper mapper) : Auth.AuthBase
+public class AuthService(IMediator mediator) : Auth.AuthBase
 {
     public override async Task<AccessTokenResponse> Login(LoginRequest request, ServerCallContext context)
     {
@@ -20,6 +18,6 @@ public class AuthService(
         var result = await mediator.Send(loginQuery);
         if (!result.IsSuccess)
             throw new RpcException(new Status(StatusCode.Unauthenticated, "Authentication failed"));
-        return mapper.Map<AccessTokenResponse>(result.Value);
+        return result.Value;
     }
 }
