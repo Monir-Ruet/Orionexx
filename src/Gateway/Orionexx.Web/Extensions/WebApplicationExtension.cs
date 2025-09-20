@@ -19,7 +19,8 @@ public static class WebApplicationExtension
             .MapGroup("api/v{api-version:apiVersion}")
             .WithApiVersionSet(apiVersionSet);
 
-        routeGroup.MapIdentityEndpoints();
+        routeGroup.MapIdentityEndpoints()
+            .MapAccountEndpoints();
 
         return app;
     }

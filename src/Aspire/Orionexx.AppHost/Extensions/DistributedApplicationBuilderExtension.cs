@@ -23,5 +23,17 @@ public static class DistributedApplicationBuilderExtension
                 AppId = "Orionexx",
                 AppProtocol = "grpc"
             });
+        
+        var pubSub = builder.AddDaprPubSub("pubsub", new DaprComponentOptions()
+        {
+            LocalPath = "../../../dapr/components/pubsub.rabbitmq.yaml"
+        });
+        
+        builder.AddProject<Projects.Orionexx_Events>("OrionexxEvents")
+            .WithReference(pubSub)
+            .WithDaprSidecar(new DaprSidecarOptions
+            {
+                AppId = "OrionexxEvents",
+            });
     }
 }

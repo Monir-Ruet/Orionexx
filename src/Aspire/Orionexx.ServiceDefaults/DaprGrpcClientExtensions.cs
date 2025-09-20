@@ -13,11 +13,11 @@ public static class DaprGrpcClientExtensions
         where TClient : class
     {
         return builder.Services.AddGrpcClient<TClient>((provider, options) =>
-            {
-                var daprPort = Environment.GetEnvironmentVariable("DAPR_GRPC_PORT") ?? "50001";
-                options.Address = new Uri($"http://localhost:{daprPort}");
-            })
-            .AddInterceptor(() => new DaprAppIdInterceptor(appId));
+        {
+            var daprPort = Environment.GetEnvironmentVariable("DAPR_GRPC_PORT") ?? "50001";
+            options.Address = new Uri($"http://localhost:{daprPort}");
+        })
+        .AddInterceptor(() => new DaprAppIdInterceptor(appId));
     }
 }
 
@@ -30,7 +30,7 @@ public class DaprAppIdInterceptor(string appId) : Interceptor
         where TRequest : class
         where TResponse : class
     {
-        var headers = context.Options.Headers ?? new Metadata();
+        var headers = context.Options.Headers ?? [];
         headers.Add("dapr-app-id", appId);
 
         var newOptions = context.Options.WithHeaders(headers);

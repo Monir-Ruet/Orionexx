@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "Orionexx.Proto";
+
+package Orionexx.Identity;
+
+message RefreshRequest{
+  string RefreshToken = 1;
+}

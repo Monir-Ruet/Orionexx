@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "Orionexx.Proto";
+
+package Orionexx.Identity;
+
+message AccessTokenResponse {
+  string AccessToken = 1;
+  string RefreshToken = 2;
+  string TokenType = 3;
+  int64 ExpiresIn = 4;
+}

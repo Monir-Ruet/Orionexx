@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "Orionexx.Proto";
 
-package orionexx.identity;
+package Orionexx.Identity;
 
 message SignupRequest {
   string name = 1;

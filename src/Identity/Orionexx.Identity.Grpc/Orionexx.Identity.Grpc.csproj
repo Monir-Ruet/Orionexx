@@ -8,7 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AutoMapper" />
         <PackageReference Include="Dapr.AspNetCore" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
         <PackageReference Include="Google.Protobuf" />
         <PackageReference Include="Grpc.AspNetCore"/>
         <PackageReference Include="Grpc.AspNetCore.Server.Reflection" />
@@ -19,15 +21,21 @@
         </PackageReference>
     </ItemGroup>
     
-    <ItemGroup>
-        <Protobuf Include="..\..\Shared\Orionexx.Protos.Shared\Identity\*.proto" GrpcServices="Server" />
-    </ItemGroup>
+    <!-- <ItemGroup>
+        <Protobuf Include="..\..\Shared\Orionexx.Protos.Shared\**/*.proto" GrpcServices="Server" Link="Protos\%(RecursiveDir)%(Filename)%(Extension)"/>
+    </ItemGroup> -->
     
     <ItemGroup>
       <ProjectReference Include="..\..\Aspire\Orionexx.ServiceDefaults\Orionexx.ServiceDefaults.csproj" />
       <ProjectReference Include="..\..\Shared\Orionexx.Protos.Shared\Orionexx.Protos.Shared.csproj" />
       <ProjectReference Include="..\Orionexx.Identity.Application\Orionexx.Identity.Application.csproj" />
       <ProjectReference Include="..\Orionexx.Identity.Infrastructure\Orionexx.Identity.Infrastructure.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Handlers\Account\Events\" />
+      <Folder Include="Handlers\Auth\Command\" />
+      <Folder Include="Handlers\Auth\Events\" />
     </ItemGroup>
 
 </Project>

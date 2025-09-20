@@ -11,4 +11,12 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Shared\Orionexx.Core.Shared\Orionexx.Core.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Protobuf Include="..\..\Shared\Orionexx.Protos.Shared\**/*.proto" GrpcServices="Server" Link="Protos\%(RecursiveDir)%(Filename)%(Extension)"/>
+    </ItemGroup>
+
 </Project>

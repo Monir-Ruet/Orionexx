@@ -17,6 +17,8 @@
       <PackageReference Include="MediatR" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
       <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+      <PackageReference Include="Google.Protobuf" />
+      <PackageReference Include="Grpc.AspNetCore"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -24,5 +26,9 @@
       <Folder Include="Handlers\Account\Query\" />
       <Folder Include="Handlers\Authentication\Command\" />
       <Folder Include="Handlers\Authentication\Events\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Protobuf Include="..\..\Shared\Orionexx.Protos.Shared\**/*.proto" GrpcServices="Server" Link="Protos\%(RecursiveDir)%(Filename)%(Extension)"/>
     </ItemGroup>
 </Project>

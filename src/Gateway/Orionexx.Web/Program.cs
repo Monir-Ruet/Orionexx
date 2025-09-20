@@ -18,6 +18,8 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseAuthentication();
+app.UseAuthorization();
 app.ConfigureWebApplication();
 app.UseCloudEvents();
 app.MapSubscribeHandler();
