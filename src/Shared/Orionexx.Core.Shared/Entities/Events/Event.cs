@@ -25,7 +25,7 @@ public class Event
     public DateTime? ProcessedAt { get; set; }
 
     public int Attempts { get; set; }
-        
+
     public string Status { get; set; } = nameof(EventStatus.Pending);
 
     public string? ErrorMessage { get; set; }

@@ -4,7 +4,7 @@ using Orionexx.Events.Services;
 namespace Orionexx.Events;
 
 public class Worker(
-    ILogger<Worker> logger, 
+    ILogger<Worker> logger,
     IServiceScopeFactory serviceFactory) : IHostedService, IDisposable
 {
     private Timer? _timer;
@@ -40,7 +40,7 @@ public class Worker(
         logger.StopHostedService();
         return Task.CompletedTask;
     }
-    
+
     private int NextTimerFireMilliseconds()
     {
         var ts = TimeSpan.FromSeconds(2);

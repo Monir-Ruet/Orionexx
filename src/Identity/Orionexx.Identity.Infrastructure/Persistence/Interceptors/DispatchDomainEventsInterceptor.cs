@@ -10,15 +10,14 @@ public class DispatchDomainEventsInterceptor(ApplicationDbContext dbContext) : S
 
     public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
     {
-        DispatchDomainEvents((ApplicationDbContext?) eventData.Context).GetAwaiter().GetResult();
+        DispatchDomainEvents((ApplicationDbContext?)eventData.Context).GetAwaiter().GetResult();
 
         return base.SavingChanges(eventData, result);
-
     }
 
     public override async ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
     {
-        await DispatchDomainEvents((ApplicationDbContext?) eventData.Context);
+        await DispatchDomainEvents((ApplicationDbContext?)eventData.Context);
 
         return await base.SavingChangesAsync(eventData, result, cancellationToken);
     }

@@ -32,8 +32,8 @@ public class Login(
             if (!isLoggedIn)
                 return Result.Failure<AccessTokenResponse>();
 
-            var accessToken = tokenProvider.GenerateToken(user.Id, user.Email!, "user", "", true);
-            var refreshToken = tokenProvider.GenerateToken(user.Id, user.Email!, "user", "", false);
+            var accessToken = tokenProvider.GenerateToken(user.Id.ToString(), user.Email, "user", "", true);
+            var refreshToken = tokenProvider.GenerateToken(user.Id.ToString(), user.Email, "user", "", false);
 
             return Result.Success(new AccessTokenResponse
             {

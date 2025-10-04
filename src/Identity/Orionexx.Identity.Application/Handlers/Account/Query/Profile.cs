@@ -12,12 +12,12 @@ public class ProfileQuery : IRequest<Result<User>>
 }
 
 public class ProfileHandler(
-    IMapper mapper, 
+    IMapper mapper,
     IAccountRepository accountRepository) : IRequestHandler<ProfileQuery, Result<User>>
 {
     public async Task<Result<User>> Handle(ProfileQuery request, CancellationToken cancellationToken)
     {
-        var user =  await accountRepository.FindByEmailAsync(request.Email);
+        var user = await accountRepository.FindByEmailAsync(request.Email);
         return user == null ? Result.Failure<User>() : Result.Success(mapper.Map<User>(user));
     }
 }

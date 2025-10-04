@@ -8,6 +8,7 @@ using Orionexx.Identity.Application.Infrastructure.Configurations;
 using Orionexx.Identity.Application.Infrastructure.Repositories;
 using Orionexx.Identity.Core.Entities.Account;
 using Orionexx.Identity.Infrastructure.Configurations;
+using Orionexx.Identity.Infrastructure.IdentityStores;
 using Orionexx.Identity.Infrastructure.Persistence;
 using Orionexx.Identity.Infrastructure.Persistence.Interceptors;
 using Orionexx.Identity.Infrastructure.Repositories;
@@ -30,18 +31,21 @@ public static class DependencyInjection
 
         builder.Services.AddSingleton<IAppConfiguration>(appConfiguration);
         builder.Services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
-        
+
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
         {
             options.UseSqlServer(appConfiguration.ConnectionStrings.Orionexx);
         });
 
+        builder.Services.AddScoped<IUserStore<AppUser>, UserStore>();
+        builder.Services.AddScoped<IRoleStore<IdentityRole>, RoleStore>();
+
         builder.Services.AddIdentity<AppUser, IdentityRole>()
-            .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
-        builder.Services.Configure<IdentityOptions>(options =>
+        builder.Services.AddIdentityCore<AppUser>(options =>
         {
+            options.SignIn.RequireConfirmedEmail = true;
             options.Password.RequireDigit = false;
             options.Password.RequireUppercase = false;
             options.Password.RequireNonAlphanumeric = false;
