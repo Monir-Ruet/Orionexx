@@ -5,7 +5,6 @@ namespace Orionexx.Events.Data;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
-    public DbSet<Event> Events { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -41,4 +40,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             entity.HasIndex(e => e.ProcessedAt);
         });
     }
+
+    public DbSet<Event> Events => Set<Event>();
 }
