@@ -6,8 +6,6 @@ public static class WebApplicationExtension
 {
     public static WebApplication ConfigureWebApplication(this WebApplication app)
     {
-        app.UseHttpsRedirection();
-
         app.UseCloudEvents();
         app.MapSubscribeHandler();
 

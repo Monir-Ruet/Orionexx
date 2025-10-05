@@ -35,7 +35,7 @@ public static class DistributedApplicationBuilderExtension
             .WithReference(pubSub)
             .WithDaprSidecar(new DaprSidecarOptions
             {
-                AppId = "OrionexxMessagingSubscriber",
+                AppId = "OrionexxMessaging",
                 AppPort = 5130,
                 AppProtocol = "http"
             });

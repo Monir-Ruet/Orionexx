@@ -6,13 +6,14 @@ namespace Orionexx.Identity.Infrastructure.Messaging;
 
 public interface IPublisher
 {
-    Task PublishAsync<T>(string eventType, T payload, CancellationToken cancellationToken = default);
+    Task PublishAsync(string eventType, string payload, CancellationToken cancellationToken = default);
 }
 
 public class Publisher(DaprClient dapr) : IPublisher
 {
-    public async Task PublishAsync<T>(string eventType, T payload, CancellationToken cancellationToken = default)
+    public async Task PublishAsync(string eventType, string payload, CancellationToken cancellationToken = default)
     {
-        await dapr.PublishEventAsync(TopicConstants.PubSub, eventType, payload, cancellationToken);
+        var payloadElement = JsonSerializer.Deserialize<JsonElement>(payload);
+        await dapr.PublishEventAsync(TopicConstants.PubSub, eventType, payloadElement, cancellationToken);
     }
 }

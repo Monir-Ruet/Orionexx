@@ -10,7 +10,7 @@ public class AccountRepository(UserManager<AppUser> userManager) : IAccountRepos
 {
     public async Task<IdentityResult> RegisterAsync(AppUser user, string password)
     {
-        user.AddDomainEvent(new AccountCreateEvent(user.Email));
+        user.AddDomainEvent(new AccountCreated(user.Email));
         return await userManager.CreateAsync(user, password);
     }
 

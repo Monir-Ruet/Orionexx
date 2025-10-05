@@ -32,7 +32,8 @@ public class DispatchDomainEventsInterceptor : SaveChangesInterceptor
         var entities = context.ChangeTracker
             .Entries<BaseEntity>()
             .Where(e => e.Entity.DomainEvents.Count != 0)
-            .Select(e => e.Entity);
+            .Select(e => e.Entity)
+            .ToList();
 
         var domainEvents = entities
             .SelectMany(e => e.DomainEvents)
@@ -43,15 +44,12 @@ public class DispatchDomainEventsInterceptor : SaveChangesInterceptor
 
         if (domainEvents.Count == 0) return;
 
-        foreach (var domainEvent in domainEvents)
+        var events = domainEvents.Select(ev => new Event
         {
-            var outboxMessage = new Event
-            {
-                EventType = domainEvent.GetType().Name,
-                Payload = JsonSerializer.Serialize(domainEvent, domainEvent.GetType()),
-            };
+            EventType = ev.GetType().Name,
+            Payload = JsonSerializer.Serialize(ev, ev.GetType()),
+        });
 
-            await context.AddAsync(outboxMessage);
-        }
+        await context.AddRangeAsync(events);
     }
 }
