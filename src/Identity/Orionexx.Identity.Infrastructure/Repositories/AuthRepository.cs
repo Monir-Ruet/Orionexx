@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
+using Orionexx.Identity.Application.Interfaces.Repositories;
 using Orionexx.Identity.Core.Entities.Account;
-using Orionexx.Identity.Application.Infrastructure.Repositories;
 
 namespace Orionexx.Identity.Infrastructure.Repositories;
 

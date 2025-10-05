@@ -1,6 +1,6 @@
 using Orionexx.Identity.Grpc.Services;
 
-namespace Orionexx.Identity.Service.Extensions;
+namespace Orionexx.Identity.Grpc.Extensions;
 
 public static class WebApplicationExtension
 {

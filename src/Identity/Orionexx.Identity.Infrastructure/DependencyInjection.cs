@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Orionexx.Identity.Application.Infrastructure;
-using Orionexx.Identity.Application.Infrastructure.Configurations;
-using Orionexx.Identity.Application.Infrastructure.Repositories;
+using Orionexx.Identity.Application.Interfaces;
+using Orionexx.Identity.Application.Interfaces.Configurations;
 using Orionexx.Identity.Application.Interfaces.Repositories;
+using Orionexx.Identity.Application.Utilities;
 using Orionexx.Identity.Core.Entities.Account;
 using Orionexx.Identity.Infrastructure.Configurations;
 using Orionexx.Identity.Infrastructure.HostedService;
@@ -16,7 +16,6 @@ using Orionexx.Identity.Infrastructure.Messaging;
 using Orionexx.Identity.Infrastructure.Persistence;
 using Orionexx.Identity.Infrastructure.Persistence.Interceptors;
 using Orionexx.Identity.Infrastructure.Repositories;
-using Orionexx.Identity.Infrastructure.Utilities;
 
 namespace Orionexx.Identity.Infrastructure;
 
@@ -60,7 +59,6 @@ public static class DependencyInjection
         });
 
         builder.Services.AddScoped<IAuthRepository, AuthRepository>();
-        builder.Services.AddScoped<IAccountRepository, AccountRepository>();
         builder.Services.AddScoped<IEventRepository, EventRepository>();
         builder.Services.AddHostedService<EventHostedService>();
         builder.Services.AddScoped<IPublisher, Publisher>();

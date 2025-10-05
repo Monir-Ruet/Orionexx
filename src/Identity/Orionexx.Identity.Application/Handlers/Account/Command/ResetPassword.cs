@@ -1,23 +1,24 @@
 using MediatR;
-using Orionexx.Identity.Application.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Orionexx.Identity.Application.Interfaces.Repositories;
+using Orionexx.Identity.Core.Entities.Account;
 
 namespace Orionexx.Identity.Application.Handlers.Account.Command;
 
-public class ResetPasswordCommand : IRequest<bool>
+public class ResetPasswordCommand : IRequest<IdentityResult>
 {
     public required string Email { get; set; }
     public required string ResetCode { get; set; }
     public required string NewPassword { get; set; }
 }
 
-public class ResetPasswordCommandHandler(IAccountRepository accountRepository) : IRequestHandler<ResetPasswordCommand, bool>
+public class ResetPasswordCommandHandler(UserManager<AppUser> userManager) : IRequestHandler<ResetPasswordCommand, IdentityResult>
 {
-    public async Task<bool> Handle(ResetPasswordCommand request, CancellationToken cancellationToken)
+    public async Task<IdentityResult> Handle(ResetPasswordCommand request, CancellationToken cancellationToken)
     {
-        var user = await accountRepository.FindByEmailAsync(request.Email);
+        var user = await userManager.FindByEmailAsync(request.Email);
         if (user is null)
-            return false;
-        return await accountRepository.ResetPasswordAsync(user, request.ResetCode, request.NewPassword);
+            return IdentityResult.Failed();
+        return await userManager.ResetPasswordAsync(user, request.ResetCode, request.NewPassword);
     }
 }

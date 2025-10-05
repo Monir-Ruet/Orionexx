@@ -4,11 +4,14 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <PreserveCompilationContext>true</PreserveCompilationContext>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AWSSDK.SimpleEmail" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi"/>
         <PackageReference Include="Dapr.AspNetCore" />
+        <PackageReference Include="RazorLight" />
     </ItemGroup>
 
     <ItemGroup>

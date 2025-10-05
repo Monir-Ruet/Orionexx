@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore.Storage;
-using Orionexx.Identity.Application.Infrastructure;
+using Orionexx.Identity.Application.Interfaces;
 
 namespace Orionexx.Identity.Infrastructure.Persistence;
 

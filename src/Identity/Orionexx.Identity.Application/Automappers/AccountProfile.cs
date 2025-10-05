@@ -2,7 +2,7 @@ using AutoMapper;
 using Orionexx.Identity.Core.Entities.Account;
 using Orionexx.Proto;
 
-namespace Orionexx.Identity.Application.Automappers;
+namespace Orionexx.Identity.Application.AutoMappers;
 
 public class AccountProfile : Profile
 {

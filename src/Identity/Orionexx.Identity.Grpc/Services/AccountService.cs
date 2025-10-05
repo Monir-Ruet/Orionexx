@@ -43,8 +43,8 @@ public class AccountService(IMediator mediator) : Account.AccountBase
             ResetCode = request.ResetCode,
             NewPassword = request.NewPassword
         };
-        var IsResetSuccess = await mediator.Send(resetPasswordCommand);
-        if (!IsResetSuccess)
+        var isResetSuccess = await mediator.Send(resetPasswordCommand);
+        if (!isResetSuccess.Succeeded)
             throw new RpcException(new Status(StatusCode.InvalidArgument, "Password reset failed"));
         return await Task.FromResult(new Empty());
     }

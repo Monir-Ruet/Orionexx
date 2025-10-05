@@ -1,9 +1,10 @@
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Orionexx.Core.Shared.Abstractions;
 using Orionexx.Proto;
-using Orionexx.Identity.Application.Infrastructure.Repositories;
 using Orionexx.Identity.Application.Interfaces.Repositories;
+using Orionexx.Identity.Core.Entities.Account;
 
 namespace Orionexx.Identity.Application.Handlers.Account.Query;
 
@@ -14,11 +15,11 @@ public class ProfileQuery : IRequest<Result<User>>
 
 public class ProfileHandler(
     IMapper mapper,
-    IAccountRepository accountRepository) : IRequestHandler<ProfileQuery, Result<User>>
+    UserManager<AppUser> userManager) : IRequestHandler<ProfileQuery, Result<User>>
 {
     public async Task<Result<User>> Handle(ProfileQuery request, CancellationToken cancellationToken)
     {
-        var user = await accountRepository.FindByEmailAsync(request.Email);
+        var user = await userManager.FindByEmailAsync(request.Email);
         return user == null ? Result.Failure<User>() : Result.Success(mapper.Map<User>(user));
     }
 }

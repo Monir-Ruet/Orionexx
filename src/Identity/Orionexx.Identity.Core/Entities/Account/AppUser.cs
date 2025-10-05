@@ -4,7 +4,7 @@ namespace Orionexx.Identity.Core.Entities.Account;
 
 public class AppUser : BaseEntity<Guid>
 {
-    public string? FullName { get; set; }
+    public required string FullName { get; set; }
     public required string Email { get; set; }
     public string? UserName { get; set; }
     public string? NormalizedUserName { get; set; }
