@@ -6,25 +6,33 @@ spec:
   type: pubsub.rabbitmq
   version: v1
   metadata:
-  - name: host
-    value: "amqp://localhost:5672"
-  - name: durable
-    value: false
-  - name: deletedWhenUnused
-    value: false
-  - name: autoAck
-    value: false
-  - name: deliveryMode
-    value: 0
-  - name: requeueInFailure
-    value: false
-  - name: prefetchCount
-    value: 0
-  - name: reconnectWait
-    value: 0
-  - name: concurrencyMode
-    value: parallel
-  - name: publisherConfirm
-    value: false
-  - name: enableDeadLetter
-    value: true
+    - name: connectionString
+      value: "amqp://localhost:5672"
+    - name: protocol
+      value: amqp
+    - name: hostname
+      value: localhost
+    - name: username
+      value: guest
+    - name: password
+      value: guest
+    - name: durable
+      value: true
+    - name: deletedWhenUnused
+      value: false
+    - name: autoAck
+      value: false
+    - name: deliveryMode
+      value: 2
+    - name: requeueInFailure
+      value: false
+    - name: prefetchCount
+      value: 10
+    - name: reconnectWait
+      value: 3s
+    - name: concurrencyMode
+      value: parallel
+    - name: publisherConfirm
+      value: true
+    - name: enableDeadLetter
+      value: true

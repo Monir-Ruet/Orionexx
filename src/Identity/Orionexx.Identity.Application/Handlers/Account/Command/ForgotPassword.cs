@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Orionexx.Core.Shared.Abstractions;
 using Orionexx.Identity.Application.Infrastructure.Repositories;
+using Orionexx.Identity.Application.Interfaces.Repositories;
 
 namespace Orionexx.Identity.Application.Handlers.Account.Command;
 

@@ -3,6 +3,7 @@ using MediatR;
 using Orionexx.Core.Shared.Abstractions;
 using Orionexx.Proto;
 using Orionexx.Identity.Application.Infrastructure.Repositories;
+using Orionexx.Identity.Application.Interfaces.Repositories;
 
 namespace Orionexx.Identity.Application.Handlers.Account.Query;
 

@@ -1,27 +1,18 @@
-using Orionexx.Messaging.Dtos;
-using Orionexx.Messaging.Services;
+using Orionexx.Messaging.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddGrpc();
-builder.Services.AddDaprClient();
-builder.Services.AddControllers().AddDapr();
+builder.ConfigureServices();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-app.MapGrpcService<GreeterService>();
-app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
-
-app.UseCloudEvents();
-app.MapSubscribeHandler();
-
-app.MapPost("AccountCreated", (AccountCreated data) =>
+if (app.Environment.IsDevelopment())
 {
-    Console.WriteLine($"AccountCreated event received: {data.Email}");
-    return Results.Ok();
-})
-.WithTopic("pubsub", "AccountCreated");
+    app.MapOpenApi();
+}
+
+app.ConfigureWebApplication();
+
+app.MapGet("/", () => "Hello Orionexx Messaging!");
 
 app.Run();

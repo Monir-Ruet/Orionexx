@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Dapr.Client;
+using Orionexx.Core.Shared.Constants;
 
 namespace Orionexx.Identity.Infrastructure.Messaging;
 
@@ -10,9 +11,8 @@ public interface IPublisher
 
 public class Publisher(DaprClient dapr) : IPublisher
 {
-    private const string PubSubName = "pubsub";
     public async Task PublishAsync<T>(string eventType, T payload, CancellationToken cancellationToken = default)
     {
-        await dapr.PublishEventAsync(PubSubName, eventType, payload, cancellationToken);
+        await dapr.PublishEventAsync(TopicConstants.PubSub, eventType, payload, cancellationToken);
     }
 }

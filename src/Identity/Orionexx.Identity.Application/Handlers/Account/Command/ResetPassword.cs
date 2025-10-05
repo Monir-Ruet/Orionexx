@@ -1,5 +1,6 @@
 using MediatR;
 using Orionexx.Identity.Application.Infrastructure.Repositories;
+using Orionexx.Identity.Application.Interfaces.Repositories;
 
 namespace Orionexx.Identity.Application.Handlers.Account.Command;
 

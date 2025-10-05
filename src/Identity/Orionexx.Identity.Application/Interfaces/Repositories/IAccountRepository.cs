@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Orionexx.Identity.Core.Entities.Account;
 
-namespace Orionexx.Identity.Application.Infrastructure.Repositories;
+namespace Orionexx.Identity.Application.Interfaces.Repositories;
 
 public interface IAccountRepository
 {

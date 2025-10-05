@@ -3,6 +3,7 @@ using Orionexx.Proto;
 using Microsoft.Extensions.Logging;
 using Orionexx.Core.Shared.Abstractions;
 using Orionexx.Identity.Application.Infrastructure.Repositories;
+using Orionexx.Identity.Application.Interfaces.Repositories;
 using Orionexx.Identity.Application.Utilities;
 
 namespace Orionexx.Identity.Application.Handlers.Auth.Query;

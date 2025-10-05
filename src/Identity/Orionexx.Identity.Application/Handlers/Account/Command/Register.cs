@@ -4,6 +4,7 @@ using Orionexx.Core.Shared.Abstractions;
 using Orionexx.Identity.Core.Entities.Account;
 using Orionexx.Identity.Application.Infrastructure.Repositories;
 using Orionexx.Identity.Application.Infrastructure;
+using Orionexx.Identity.Application.Interfaces.Repositories;
 
 namespace Orionexx.Identity.Application.Handlers.Account.Command;
 
