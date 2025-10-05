@@ -17,11 +17,11 @@ app.MapGet("/", () => "Communication with gRPC endpoints must be made through a 
 app.UseCloudEvents();
 app.MapSubscribeHandler();
 
-// app.MapPost("AccountCreated", (AccountCreated data) =>
-// {
-//     Console.WriteLine($"AccountCreated event received: {data.Email}");
-//     return Results.Ok();
-// })
-// .WithTopic("pubsub", "AccountCreated");
+app.MapPost("AccountCreated", (AccountCreated data) =>
+{
+    Console.WriteLine($"AccountCreated event received: {data.Email}");
+    return Results.Ok();
+})
+.WithTopic("pubsub", "AccountCreated");
 
 app.Run();
