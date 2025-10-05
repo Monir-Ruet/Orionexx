@@ -29,11 +29,12 @@ public static class DistributedApplicationBuilderExtension
             LocalPath = "../../../dapr/components/pubsub.rabbitmq.yaml"
         });
 
-        builder.AddProject<Projects.Orionexx_Events>("OrionexxEvents")
+        builder.AddProject<Projects.Orionexx_Messaging>("OrionexxMessaging")
             .WithReference(pubSub)
             .WithDaprSidecar(new DaprSidecarOptions
             {
-                AppId = "OrionexxEvents",
+                AppId = "OrionexxMessaging",
+                AppPort = 5098,
             });
     }
 }

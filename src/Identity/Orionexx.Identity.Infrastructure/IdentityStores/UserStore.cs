@@ -753,7 +753,7 @@ public class UserStore(ApplicationDbContext context) :
     {
         cancellationToken.ThrowIfCancellationRequested();
         ArgumentNullException.ThrowIfNull(user, nameof(user));
-        context.Add(user);
+        context.Users.Add(user);
         await context.SaveChangesAsync(cancellationToken);
         return IdentityResult.Success;
     }

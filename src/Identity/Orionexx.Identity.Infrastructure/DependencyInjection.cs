@@ -4,11 +4,15 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Orionexx.Identity.Application.Infrastructure;
 using Orionexx.Identity.Application.Infrastructure.Configurations;
 using Orionexx.Identity.Application.Infrastructure.Repositories;
+using Orionexx.Identity.Application.Interfaces.Repositories;
 using Orionexx.Identity.Core.Entities.Account;
 using Orionexx.Identity.Infrastructure.Configurations;
+using Orionexx.Identity.Infrastructure.HostedService;
 using Orionexx.Identity.Infrastructure.IdentityStores;
+using Orionexx.Identity.Infrastructure.Messaging;
 using Orionexx.Identity.Infrastructure.Persistence;
 using Orionexx.Identity.Infrastructure.Persistence.Interceptors;
 using Orionexx.Identity.Infrastructure.Repositories;
@@ -32,9 +36,10 @@ public static class DependencyInjection
         builder.Services.AddSingleton<IAppConfiguration>(appConfiguration);
         builder.Services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
-        builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        builder.Services.AddDbContext<ApplicationDbContext>((serviceProvider, options) =>
         {
             options.UseSqlServer(appConfiguration.ConnectionStrings.Orionexx);
+            options.AddInterceptors(serviceProvider.GetRequiredService<ISaveChangesInterceptor>());
         });
 
         builder.Services.AddScoped<IUserStore<AppUser>, UserStore>();
@@ -56,6 +61,10 @@ public static class DependencyInjection
 
         builder.Services.AddScoped<IAuthRepository, AuthRepository>();
         builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+        builder.Services.AddScoped<IEventRepository, EventRepository>();
+        builder.Services.AddHostedService<EventHostedService>();
+        builder.Services.AddScoped<IPublisher, Publisher>();
+        builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         return builder;
     }

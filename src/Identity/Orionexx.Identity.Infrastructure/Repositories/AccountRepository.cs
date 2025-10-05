@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Orionexx.Identity.Core.Entities.Account;
 using Orionexx.Identity.Application.Infrastructure.Repositories;
+using Orionexx.Identity.Core.Events.Account;
 
 namespace Orionexx.Identity.Infrastructure.Repositories;
 
@@ -8,6 +9,7 @@ public class AccountRepository(UserManager<AppUser> userManager) : IAccountRepos
 {
     public async Task<IdentityResult> RegisterAsync(AppUser user, string password)
     {
+        user.AddDomainEvent(new AccountCreateEvent(user.Email));
         return await userManager.CreateAsync(user, password);
     }
 

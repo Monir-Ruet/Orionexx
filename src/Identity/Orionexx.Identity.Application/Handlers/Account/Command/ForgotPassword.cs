@@ -5,7 +5,6 @@ using Orionexx.Identity.Application.Infrastructure.Repositories;
 
 namespace Orionexx.Identity.Application.Handlers.Account.Command;
 
-
 public class ForgotPasswordCommand : IRequest<Result>
 {
     public required string Email { get; set; }

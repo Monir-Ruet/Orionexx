@@ -12,7 +12,7 @@ using Orionexx.Identity.Infrastructure.Persistence;
 namespace Orionexx.Identity.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251004112608_initial_identity")]
+    [Migration("20251004160851_initial_identity")]
     partial class initial_identity
     {
         /// <inheritdoc />
@@ -147,18 +147,10 @@ namespace Orionexx.Identity.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<int>("Attempts")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Destination")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("ErrorMessage")
+                    b.Property<string>("Error")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EventType")
@@ -172,6 +164,9 @@ namespace Orionexx.Identity.Infrastructure.Migrations
 
                     b.Property<DateTime?>("ProcessedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("RetryCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .IsRequired()

@@ -25,7 +25,7 @@ public class EventService(
         foreach (var ev in events)
         {
             ev.ProcessedAt = DateTime.UtcNow;
-            ev.Status = nameof(EventStatus.Processing);
+            ev.Status = nameof(EventStatus.Processed);
 
             await eventPublisher.PublishAsync(ev.EventType, ev.Payload, cancellationToken);
             await dbContext.SaveChangesAsync(cancellationToken);

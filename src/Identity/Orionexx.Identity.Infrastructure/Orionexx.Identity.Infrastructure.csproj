@@ -20,6 +20,8 @@
       <PackageReference Include="Microsoft.Extensions.Hosting" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
+      <PackageReference Include="Dapr.AspNetCore" />
+      <PackageReference Include="Z.EntityFramework.Extensions.EFCore" />
     </ItemGroup>
     
 </Project>

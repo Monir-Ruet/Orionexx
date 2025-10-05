@@ -21,15 +21,11 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             entity.Property(e => e.Payload)
                 .IsRequired();
 
-            entity.Property(e => e.Destination)
-                .IsRequired()
-                .HasMaxLength(255);
-
             entity.Property(e => e.Status)
                 .IsRequired()
                 .HasMaxLength(20);
 
-            entity.Property(e => e.Attempts);
+            entity.Property(e => e.RetryCount);
 
             entity.Property(e => e.CreatedAt)
                 .IsRequired();

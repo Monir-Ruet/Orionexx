@@ -1,28 +1,31 @@
 using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Orionexx.Core.Shared.Entities.Events;
 using Orionexx.Core.Shared.Primitives;
 
 namespace Orionexx.Identity.Infrastructure.Persistence.Interceptors;
 
-public class DispatchDomainEventsInterceptor(ApplicationDbContext dbContext) : SaveChangesInterceptor
+public class DispatchDomainEventsInterceptor : SaveChangesInterceptor
 {
-
-    public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
+    public override InterceptionResult<int> SavingChanges(
+        DbContextEventData eventData,
+        InterceptionResult<int> result)
     {
-        DispatchDomainEvents((ApplicationDbContext?)eventData.Context).GetAwaiter().GetResult();
-
+        DispatchDomainEvents(eventData.Context).GetAwaiter().GetResult();
         return base.SavingChanges(eventData, result);
     }
 
-    public override async ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
+    public override async ValueTask<InterceptionResult<int>> SavingChangesAsync(
+        DbContextEventData eventData,
+        InterceptionResult<int> result,
+        CancellationToken cancellationToken = default)
     {
-        await DispatchDomainEvents((ApplicationDbContext?)eventData.Context);
-
+        await DispatchDomainEvents(eventData.Context);
         return await base.SavingChangesAsync(eventData, result, cancellationToken);
     }
 
-    public async Task DispatchDomainEvents(ApplicationDbContext? context)
+    private async Task DispatchDomainEvents(DbContext? context)
     {
         if (context == null) return;
 
@@ -35,17 +38,20 @@ public class DispatchDomainEventsInterceptor(ApplicationDbContext dbContext) : S
             .SelectMany(e => e.DomainEvents)
             .ToList();
 
-        entities.ToList().ForEach(e => e.ClearDomainEvents());
+        foreach (var entity in entities)
+            entity.ClearDomainEvents();
+
+        if (domainEvents.Count == 0) return;
 
         foreach (var domainEvent in domainEvents)
         {
             var outboxMessage = new Event
             {
-                EventType = domainEvent.GetType().FullName ?? string.Empty,
-                Payload = JsonSerializer.Serialize(domainEvent) ?? string.Empty,
-                Destination = "IdentityService"
+                EventType = domainEvent.GetType().Name,
+                Payload = JsonSerializer.Serialize(domainEvent, domainEvent.GetType()),
             };
-            await dbContext.Events.AddAsync(outboxMessage);
+
+            await context.AddAsync(outboxMessage);
         }
     }
 }
