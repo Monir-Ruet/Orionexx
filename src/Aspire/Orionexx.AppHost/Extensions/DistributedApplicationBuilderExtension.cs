@@ -7,12 +7,12 @@ public static class DistributedApplicationBuilderExtension
     public static void ConfigureDistributedApplication(this IDistributedApplicationBuilder builder)
     {
         var sqlServerConnectionString = builder.AddConnectionString("Orionexx");
-        
+
         var pubSub = builder.AddDaprPubSub("pubsub", new DaprComponentOptions()
         {
             LocalPath = "../../../dapr/components/pubsub.rabbitmq.yaml"
         });
-        
+
         builder.AddProject<Projects.Orionexx_Identity_Grpc>("OrionexxIdentity")
             .WithReference(sqlServerConnectionString)
             .WithReference(pubSub)

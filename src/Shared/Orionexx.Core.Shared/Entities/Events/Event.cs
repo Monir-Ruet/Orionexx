@@ -45,7 +45,7 @@ public class Event
     {
         Status = EventStatus.Pending.ToString();
         Error = null;
-        RetryCount??= 0;
+        RetryCount ??= 0;
         RetryCount++;
     }
 }

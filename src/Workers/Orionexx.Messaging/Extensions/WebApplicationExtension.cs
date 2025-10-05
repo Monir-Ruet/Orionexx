@@ -10,7 +10,7 @@ public static class WebApplicationExtension
 
         app.UseCloudEvents();
         app.MapSubscribeHandler();
-        
+
         var routeGroup = app.MapGroup("events");
         routeGroup.HandleAccountEvents();
 
