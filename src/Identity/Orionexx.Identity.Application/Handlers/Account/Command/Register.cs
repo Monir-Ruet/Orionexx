@@ -1,8 +1,10 @@
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Orionexx.Core.Shared.Abstractions;
+using Orionexx.Core.Shared.Events.Account;
+using Orionexx.Identity.Application.Interfaces;
 using Orionexx.Identity.Core.Entities.Account;
-using Orionexx.Identity.Application.Infrastructure.Repositories;
 
 namespace Orionexx.Identity.Application.Handlers.Account.Command;
 
@@ -15,13 +17,14 @@ public class RegisterCommand : IRequest<Result>
 
 public class Register(
     ILogger<Register> logger,
-    IAccountRepository accountRepository) : IRequestHandler<RegisterCommand, Result>
+    IUnitOfWork unitOfWork,
+    UserManager<AppUser> userManager) : IRequestHandler<RegisterCommand, Result>
 {
     public async Task<Result> Handle(RegisterCommand request, CancellationToken cancellationToken)
     {
         try
         {
-            var existingUser = await accountRepository.FindByEmailAsync(request.Email);
+            var existingUser = await userManager.FindByEmailAsync(request.Email);
             if (existingUser is not null)
                 return Result.Failure("User already exists");
             var appUser = new AppUser()
@@ -30,7 +33,15 @@ public class Register(
                 Email = request.Email,
                 FullName = request.Name,
             };
-            var isRegistered = await accountRepository.RegisterAsync(appUser, request.Password);
+            var isRegistered = await userManager.CreateAsync(appUser, request.Password);
+            if (!isRegistered.Succeeded)
+                return Result.Failure("Registration failed");
+            var user = await userManager.FindByEmailAsync(request.Email);
+            if (user is null)
+                return Result.Failure("User not found");
+            var confirmationUrl = await userManager.GeneratePasswordResetTokenAsync(user);
+            user.AddDomainEvent(new AccountCreated(request.Email, request.Name.Split(" ").Last(), confirmationUrl));
+            await unitOfWork.SaveChangesAsync(cancellationToken);
             return isRegistered.Succeeded ? Result.Success() : Result.Failure();
         }
         catch (Exception ex)

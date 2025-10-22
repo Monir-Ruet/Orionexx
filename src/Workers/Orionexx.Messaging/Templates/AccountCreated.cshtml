@@ -1,0 +1,14 @@
+@model Orionexx.Core.Shared.Events.Account.AccountCreated
+
+@{
+    Layout = "_Layout.cshtml";
+}
+
+
+<h2>Welcome, @Model.LastName!</h2>
+<p>
+    We're excited to have you on board. You can get started by visiting:
+</p>
+<p>
+    <a href="@Model.ConfirmationUrl" style="color:#1a73e8;">Activate your account</a>
+</p>

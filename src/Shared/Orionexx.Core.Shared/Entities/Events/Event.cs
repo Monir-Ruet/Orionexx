@@ -17,16 +17,35 @@ public class Event
     [Required]
     public string Payload { get; set; } = string.Empty;
 
-    [Required]
-    [MaxLength(255)]
-    public required string Destination { get; set; }
-
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? ProcessedAt { get; set; }
 
-    public int Attempts { get; set; }
-        
+    public int? RetryCount { get; set; }
+
     public string Status { get; set; } = nameof(EventStatus.Pending);
 
-    public string? ErrorMessage { get; set; }
+    public string? Error { get; set; }
+
+    public void MarkAsProcessed()
+    {
+        Status = EventStatus.Processed.ToString();
+        ProcessedAt = DateTime.UtcNow;
+        Error = null;
+    }
+
+    public void MarkAsFailed(string error)
+    {
+        Status = EventStatus.Failed.ToString();
+        Error = error;
+        RetryCount++;
+        ProcessedAt = DateTime.UtcNow;
+    }
+
+    public void MarkForRetry()
+    {
+        Status = EventStatus.Pending.ToString();
+        Error = null;
+        RetryCount ??= 0;
+        RetryCount++;
+    }
 }

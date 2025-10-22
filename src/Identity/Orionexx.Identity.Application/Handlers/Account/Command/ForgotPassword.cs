@@ -1,10 +1,11 @@
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Orionexx.Core.Shared.Abstractions;
-using Orionexx.Identity.Application.Infrastructure.Repositories;
+using Orionexx.Identity.Application.Interfaces.Repositories;
+using Orionexx.Identity.Core.Entities.Account;
 
 namespace Orionexx.Identity.Application.Handlers.Account.Command;
-
 
 public class ForgotPasswordCommand : IRequest<Result>
 {
@@ -13,17 +14,16 @@ public class ForgotPasswordCommand : IRequest<Result>
 
 public class ForgotPassword(
     ILogger<ForgotPassword> logger,
-    IAccountRepository accountRepository) : IRequestHandler<ForgotPasswordCommand, Result>
+    UserManager<AppUser> userManager) : IRequestHandler<ForgotPasswordCommand, Result>
 {
     public async Task<Result> Handle(ForgotPasswordCommand request, CancellationToken cancellationToken)
     {
         try
         {
-            var user = await accountRepository.FindByEmailAsync(request.Email);
+            var user = await userManager.FindByEmailAsync(request.Email);
             if (user is null)
                 return Result.Failure("User not found");
-            var resetCode = await accountRepository.GeneratePasswordResetTokenAsync(user);
-            // Here you would typically send the token to the user's email.
+            var resetCode = await userManager.GeneratePasswordResetTokenAsync(user);
             return Result.Success();
         }
         catch (Exception)

@@ -44,6 +44,4 @@ dotnet ef database update \
   --project ./src/Identity/Orionexx.Identity.Infrastructure/ \
   --startup-project ./src/Identity/Orionexx.Identity.Grpc/
 
-dotnet ef database update --project ./src/Workers/Orionexx.Events
-
 echo "✅ Setup complete."

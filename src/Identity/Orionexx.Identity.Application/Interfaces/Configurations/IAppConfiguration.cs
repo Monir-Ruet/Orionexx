@@ -1,4 +1,4 @@
-namespace Orionexx.Identity.Application.Infrastructure.Configurations;
+namespace Orionexx.Identity.Application.Interfaces.Configurations;
 
 public interface IAppConfiguration
 {

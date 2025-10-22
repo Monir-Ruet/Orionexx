@@ -2,4 +2,4 @@ using MediatR;
 
 namespace Orionexx.Core.Shared.Primitives;
 
-public interface BaseEvent : INotification { }
+public interface BaseEvent { }

@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using Orionexx.Identity.Application.Infrastructure.Configurations;
+using Orionexx.Identity.Application.Interfaces.Configurations;
 
 namespace Orionexx.Identity.Application.Utilities;
 

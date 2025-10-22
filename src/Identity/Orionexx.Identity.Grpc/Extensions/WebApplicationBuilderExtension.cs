@@ -1,10 +1,8 @@
-using System.Reflection;
-using FluentValidation;
 using Orionexx.Identity.Application;
 using Orionexx.Identity.Infrastructure;
 using Orionexx.ServiceDefaults;
 
-namespace Orionexx.Identity.Service.Extensions;
+namespace Orionexx.Identity.Grpc.Extensions;
 
 public static class WebApplicationBuilderExtension
 {

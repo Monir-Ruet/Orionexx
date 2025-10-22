@@ -1,4 +1,3 @@
-using AutoMapper;
 using Grpc.Core;
 using MediatR;
 using Orionexx.Identity.Application.Handlers.Auth.Query;

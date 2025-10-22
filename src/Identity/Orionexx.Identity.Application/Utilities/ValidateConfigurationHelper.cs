@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace Orionexx.Identity.Infrastructure.Utilities;
+namespace Orionexx.Identity.Application.Utilities;
 
 public static class ValidateConfigurationHelper
 {

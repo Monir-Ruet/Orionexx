@@ -1,4 +1,4 @@
-namespace Orionexx.Identity.Application.Infrastructure;
+namespace Orionexx.Identity.Application.Interfaces;
 
 public interface IUnitOfWork
 {

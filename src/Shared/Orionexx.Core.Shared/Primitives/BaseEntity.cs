@@ -11,7 +11,7 @@ public abstract class BaseEntity
     public void AddDomainEvent(BaseEvent domainEvent) => _domainEvents.Add(domainEvent);
     public void ClearDomainEvents() => _domainEvents.Clear();
 
-    public void RemoveDomainEvent(BaseEvent domainEvent) =>_domainEvents.Remove(domainEvent);
+    public void RemoveDomainEvent(BaseEvent domainEvent) => _domainEvents.Remove(domainEvent);
 }
 
 
@@ -47,5 +47,5 @@ public abstract class BaseEntity<T> : BaseEntity, IEquatable<BaseEntity<T>>
         return first.Equals(second);
     }
 
-    public static bool operator !=(BaseEntity<T>? first, BaseEntity<T>? second) => !(first ==second);
+    public static bool operator !=(BaseEntity<T>? first, BaseEntity<T>? second) => !(first == second);
 }
